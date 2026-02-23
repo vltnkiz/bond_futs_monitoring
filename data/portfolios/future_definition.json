@@ -1,0 +1,552 @@
+{
+  "CONFH26": {
+    "ContractSymbol": "CONFH26",
+    "ExpiryMonth": "Mar-2026",
+    "LastTradingDate": "2026-03-06 00:00:00",
+    "DeliveryDate": "2026-03-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "CH0557778310",
+      "CH0024524966",
+      "CH0127181193",
+      "CH0440081393",
+      "CH0440081567"
+    ]
+  },
+  "CONFM26": {
+    "ContractSymbol": "CONFM26",
+    "ExpiryMonth": "Jun-2026",
+    "LastTradingDate": "2026-06-08 00:00:00",
+    "DeliveryDate": "2026-06-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "CH0557778310",
+      "CH0024524966",
+      "CH0127181193",
+      "CH0440081393",
+      "CH0440081567"
+    ]
+  },
+  "FBEUH26": {
+    "ContractSymbol": "FBEUH26",
+    "ExpiryMonth": "Mar-2026",
+    "LastTradingDate": "2026-03-06 00:00:00",
+    "DeliveryDate": "2026-03-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "EU000A3K4ES4",
+      "EU000A3K4D41",
+      "EU000A4D8KD2"
+    ]
+  },
+  "FBEUM26": {
+    "ContractSymbol": "FBEUM26",
+    "ExpiryMonth": "Jun-2026",
+    "LastTradingDate": "2026-06-08 00:00:00",
+    "DeliveryDate": "2026-06-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "EU000A3K4ES4",
+      "EU000A3K4D41",
+      "EU000A4D8KD2"
+    ]
+  },
+  "FBEUU26": {
+    "ContractSymbol": "FBEUU26",
+    "ExpiryMonth": "Sep-2026",
+    "LastTradingDate": "2026-09-08 00:00:00",
+    "DeliveryDate": "2026-09-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "EU000A3K4ES4",
+      "EU000A4D8KD2"
+    ]
+  },
+  "FBONH26": {
+    "ContractSymbol": "FBONH26",
+    "ExpiryMonth": "Mar-2026",
+    "LastTradingDate": "2026-03-06 00:00:00",
+    "DeliveryDate": "2026-03-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "ES0000012P33",
+      "ES0000012O67",
+      "ES0000012N35"
+    ]
+  },
+  "FBONM26": {
+    "ContractSymbol": "FBONM26",
+    "ExpiryMonth": "Jun-2026",
+    "LastTradingDate": "2026-06-08 00:00:00",
+    "DeliveryDate": "2026-06-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "ES0000012P33",
+      "ES0000012Q08",
+      "ES0000012O67"
+    ]
+  },
+  "FBONU26": {
+    "ContractSymbol": "FBONU26",
+    "ExpiryMonth": "Sep-2026",
+    "LastTradingDate": "2026-09-08 00:00:00",
+    "DeliveryDate": "2026-09-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "ES0000012P33",
+      "ES0000012Q08",
+      "ES0000012O67"
+    ]
+  },
+  "FBTMH26": {
+    "ContractSymbol": "FBTMH26",
+    "ExpiryMonth": "Mar-2026",
+    "LastTradingDate": "2026-03-06 00:00:00",
+    "DeliveryDate": "2026-03-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "IT0005580094",
+      "IT0005671273",
+      "IT0005422891",
+      "IT0005619546",
+      "IT0005413171",
+      "IT0005449969",
+      "IT0005595803",
+      "IT0005654642",
+      "IT0005436693",
+      "IT0005561888"
+    ]
+  },
+  "FBTMM26": {
+    "ContractSymbol": "FBTMM26",
+    "ExpiryMonth": "Jun-2026",
+    "LastTradingDate": "2026-06-08 00:00:00",
+    "DeliveryDate": "2026-06-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "IT0005580094",
+      "IT0005466013",
+      "IT0005671273",
+      "IT0005422891",
+      "IT0005619546",
+      "IT0005449969",
+      "IT0005595803",
+      "IT0005436693"
+    ]
+  },
+  "FBTMU26": {
+    "ContractSymbol": "FBTMU26",
+    "ExpiryMonth": "Sep-2026",
+    "LastTradingDate": "2026-09-08 00:00:00",
+    "DeliveryDate": "2026-09-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "IT0005466013",
+      "IT0005422891",
+      "IT0005619546",
+      "IT0005449969",
+      "IT0005595803",
+      "IT0005647265",
+      "IT0005436693"
+    ]
+  },
+  "FBTPH26": {
+    "ContractSymbol": "FBTPH26",
+    "ExpiryMonth": "Mar-2026",
+    "LastTradingDate": "2026-03-06 00:00:00",
+    "DeliveryDate": "2026-03-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "IT0005433195",
+      "IT0005358806",
+      "IT0005648149",
+      "IT0005607970",
+      "IT0005676504",
+      "IT0005631590",
+      "IT0005402117"
+    ]
+  },
+  "FBTPM26": {
+    "ContractSymbol": "FBTPM26",
+    "ExpiryMonth": "Jun-2026",
+    "LastTradingDate": "2026-06-08 00:00:00",
+    "DeliveryDate": "2026-06-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "IT0005433195",
+      "IT0005358806",
+      "IT0005648149",
+      "IT0005607970",
+      "IT0005676504",
+      "IT0005631590",
+      "IT0005402117"
+    ]
+  },
+  "FBTPU26": {
+    "ContractSymbol": "FBTPU26",
+    "ExpiryMonth": "Sep-2026",
+    "LastTradingDate": "2026-09-08 00:00:00",
+    "DeliveryDate": "2026-09-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "IT0005433195",
+      "IT0005648149",
+      "IT0005676504",
+      "IT0005631590",
+      "IT0005402117"
+    ]
+  },
+  "FBTSH26": {
+    "ContractSymbol": "FBTSH26",
+    "ExpiryMonth": "Mar-2026",
+    "LastTradingDate": "2026-03-06 00:00:00",
+    "DeliveryDate": "2026-03-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "IT0005566408",
+      "IT0005445306",
+      "IT0005340929",
+      "IT0005548315",
+      "IT0005467482",
+      "IT0005521981",
+      "IT0005641029",
+      "IT0005433690",
+      "IT0005660052"
+    ]
+  },
+  "FBTSM26": {
+    "ContractSymbol": "FBTSM26",
+    "ExpiryMonth": "Jun-2026",
+    "LastTradingDate": "2026-06-08 00:00:00",
+    "DeliveryDate": "2026-06-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "IT0005566408",
+      "IT0005445306",
+      "IT0005340929",
+      "IT0005548315",
+      "IT0005467482",
+      "IT0005584849",
+      "IT0005641029",
+      "IT0005689960",
+      "IT0005495731",
+      "IT0005660052",
+      "IT0005365165"
+    ]
+  },
+  "FBTSU26": {
+    "ContractSymbol": "FBTSU26",
+    "ExpiryMonth": "Sep-2026",
+    "LastTradingDate": "2026-09-08 00:00:00",
+    "DeliveryDate": "2026-09-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "IT0005566408",
+      "IT0005340929",
+      "IT0005467482",
+      "IT0005611055",
+      "IT0005584849",
+      "IT0005689960",
+      "IT0005495731",
+      "IT0005660052",
+      "IT0005365165"
+    ]
+  },
+  "FGBLH26": {
+    "ContractSymbol": "FGBLH26",
+    "ExpiryMonth": "Mar-2026",
+    "LastTradingDate": "2026-03-06 00:00:00",
+    "DeliveryDate": "2026-03-10",
+    "NotionalValue": 100000,
+    "TickValue": 10,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "DE000BU2Z049",
+      "DE000BU2Z056",
+      "DE000BU3Z047"
+    ]
+  },
+  "FGBLM26": {
+    "ContractSymbol": "FGBLM26",
+    "ExpiryMonth": "Jun-2026",
+    "LastTradingDate": "2026-06-08 00:00:00",
+    "DeliveryDate": "2026-06-10",
+    "NotionalValue": 100000,
+    "TickValue": 10,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "DE000BU2Z049",
+      "DE000BU2Z056",
+      "DE000BU3Z047",
+      "DE000BU2Z064"
+    ]
+  },
+  "FGBLU26": {
+    "ContractSymbol": "FGBLU26",
+    "ExpiryMonth": "Sep-2026",
+    "LastTradingDate": "2026-09-08 00:00:00",
+    "DeliveryDate": "2026-09-10",
+    "NotionalValue": 100000,
+    "TickValue": 10,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "DE000BU2Z056",
+      "DE000BU2Z064"
+    ]
+  },
+  "FGBMH26": {
+    "ContractSymbol": "FGBMH26",
+    "ExpiryMonth": "Mar-2026",
+    "LastTradingDate": "2026-03-06 00:00:00",
+    "DeliveryDate": "2026-03-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "DE0001030732",
+      "DE0001102564",
+      "DE000BU25059",
+      "DE0001102531",
+      "DE000BU27006"
+    ]
+  },
+  "FGBMM26": {
+    "ContractSymbol": "FGBMM26",
+    "ExpiryMonth": "Jun-2026",
+    "LastTradingDate": "2026-06-08 00:00:00",
+    "DeliveryDate": "2026-06-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "DE0001030732",
+      "DE0001102564",
+      "DE000BU25067",
+      "DE0001102531"
+    ]
+  },
+  "FGBMU26": {
+    "ContractSymbol": "FGBMU26",
+    "ExpiryMonth": "Sep-2026",
+    "LastTradingDate": "2026-09-08 00:00:00",
+    "DeliveryDate": "2026-09-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "DE0001102580",
+      "DE0001030732",
+      "DE0001102564",
+      "DE000BU25067"
+    ]
+  },
+  "FGBSH26": {
+    "ContractSymbol": "FGBSH26",
+    "ExpiryMonth": "Mar-2026",
+    "LastTradingDate": "2026-03-06 00:00:00",
+    "DeliveryDate": "2026-03-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "DE000BU22114",
+      "DE0001102440",
+      "DE000BU25000"
+    ]
+  },
+  "FGBSM26": {
+    "ContractSymbol": "FGBSM26",
+    "ExpiryMonth": "Jun-2026",
+    "LastTradingDate": "2026-06-08 00:00:00",
+    "DeliveryDate": "2026-06-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "DE000BU22122",
+      "DE0001102457",
+      "DE000BU25000"
+    ]
+  },
+  "FGBSU26": {
+    "ContractSymbol": "FGBSU26",
+    "ExpiryMonth": "Sep-2026",
+    "LastTradingDate": "2026-09-08 00:00:00",
+    "DeliveryDate": "2026-09-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "DE0001102457",
+      "DE000BU25018",
+      "DE0001102556"
+    ]
+  },
+  "FGBXH26": {
+    "ContractSymbol": "FGBXH26",
+    "ExpiryMonth": "Mar-2026",
+    "LastTradingDate": "2026-03-06 00:00:00",
+    "DeliveryDate": "2026-03-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "DE0001102614",
+      "DE000BU2D004",
+      "DE0001030757",
+      "DE000BU2D012",
+      "DE0001102481",
+      "DE0001030724",
+      "DE0001102572"
+    ]
+  },
+  "FGBXM26": {
+    "ContractSymbol": "FGBXM26",
+    "ExpiryMonth": "Jun-2026",
+    "LastTradingDate": "2026-06-08 00:00:00",
+    "DeliveryDate": "2026-06-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "DE0001102614",
+      "DE000BU2D004",
+      "DE0001030757",
+      "DE000BU2D012",
+      "DE0001102481",
+      "DE0001030724",
+      "DE0001102572"
+    ]
+  },
+  "FGBXU26": {
+    "ContractSymbol": "FGBXU26",
+    "ExpiryMonth": "Sep-2026",
+    "LastTradingDate": "2026-09-08 00:00:00",
+    "DeliveryDate": "2026-09-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "DE0001102614",
+      "DE000BU2D004",
+      "DE0001030757",
+      "DE000BU2D012",
+      "DE0001102572"
+    ]
+  },
+  "FOAMH26": {
+    "ContractSymbol": "FOAMH26",
+    "ExpiryMonth": "Mar-2026",
+    "LastTradingDate": "2026-03-06 00:00:00",
+    "DeliveryDate": "2026-03-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "FR0013516549",
+      "FR001400Z2L7",
+      "FR0012993103"
+    ]
+  },
+  "FOAMM26": {
+    "ContractSymbol": "FOAMM26",
+    "ExpiryMonth": "Jun-2026",
+    "LastTradingDate": "2026-06-08 00:00:00",
+    "DeliveryDate": "2026-06-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "FR001400Z2L7",
+      "FR0014002WK3",
+      "FR0012993103"
+    ]
+  },
+  "FOAMU26": {
+    "ContractSymbol": "FOAMU26",
+    "ExpiryMonth": "Sep-2026",
+    "LastTradingDate": "2026-09-08 00:00:00",
+    "DeliveryDate": "2026-09-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "FR0014002WK3",
+      "FR0012993103"
+    ]
+  },
+  "FOATH26": {
+    "ContractSymbol": "FOATH26",
+    "ExpiryMonth": "Mar-2026",
+    "LastTradingDate": "2026-03-06 00:00:00",
+    "DeliveryDate": "2026-03-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "FR0014012II5",
+      "FR001400QMF9",
+      "FR001400X8V5"
+    ]
+  },
+  "FOATM26": {
+    "ContractSymbol": "FOATM26",
+    "ExpiryMonth": "Jun-2026",
+    "LastTradingDate": "2026-06-08 00:00:00",
+    "DeliveryDate": "2026-06-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "FR0014012II5",
+      "FR001400X8V5"
+    ]
+  },
+  "FOATU26": {
+    "ContractSymbol": "FOATU26",
+    "ExpiryMonth": "Sep-2026",
+    "LastTradingDate": "2026-09-08 00:00:00",
+    "DeliveryDate": "2026-09-10",
+    "NotionalValue": 0.0,
+    "TickValue": 0.0,
+    "NotionalCoupon": 6.0,
+    "DeliverableBonds": [
+      "FR0014012II5",
+      "FR001400X8V5"
+    ]
+  }
+}
