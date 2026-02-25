@@ -1,4 +1,4 @@
-from create_portfolios.adapters.eurex_futures_basket_downloader import EurexFuturesBasketDownloader
+from static_data_loader.adapters.eurex_futures_basket_downloader import EurexFuturesBasketDownloader
 
 def download_futures_basket(save_dir) -> str:
     downloader = EurexFuturesBasketDownloader()

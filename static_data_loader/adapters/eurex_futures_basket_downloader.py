@@ -7,7 +7,7 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
-from create_portfolios.core.ports.futures_basket_downloader import BasketDownloader
+from static_data_loader.core.ports.futures_basket_downloader import BasketDownloader
 
 
 class EurexFuturesBasketDownloader(BasketDownloader):

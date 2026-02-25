@@ -3,7 +3,7 @@ from typing import Optional
 import pandas as pd
 import lseg.data as ld
 from lseg.data.content import search
-from create_portfolios.core.ports.market_data_provider import MarketDataProvider
+from static_data_loader.core.ports.market_data_provider import MarketDataProvider
 
 
 class LSEGMarketDataProvider(MarketDataProvider):

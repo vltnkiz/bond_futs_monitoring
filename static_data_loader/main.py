@@ -1,5 +1,5 @@
-from create_portfolios.core.usecases.futures_basket_download import download_futures_basket
-from create_portfolios.core.usecases.definitions_update import update_definitions
+from static_data_loader.core.usecases.futures_basket_download import download_futures_basket
+from static_data_loader.core.usecases.definitions_update import update_definitions
 
 
 def main():

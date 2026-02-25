@@ -1,4 +1,4 @@
-from create_portfolios.core.models.Future import Future
+from static_data_loader.core.models.Future import Future
 from typing import Dict, List
 import json
 

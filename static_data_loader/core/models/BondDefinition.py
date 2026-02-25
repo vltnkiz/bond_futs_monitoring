@@ -1,4 +1,4 @@
-from create_portfolios.core.models.Bond import Bond
+from static_data_loader.core.models.Bond import Bond
 from typing import Dict, List
 import json
 

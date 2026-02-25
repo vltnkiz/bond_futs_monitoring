@@ -2,11 +2,11 @@ from datetime import datetime
 
 import pandas as pd
 
-from create_portfolios.adapters.lseg_market_data_provider import LSEGMarketDataProvider
-from create_portfolios.core.models.Bond import Bond
-from create_portfolios.core.models.BondDefinition import BondDefinition
-from create_portfolios.core.models.Future import Future
-from create_portfolios.core.models.FutureDefinition import FutureDefinition
+from static_data_loader.adapters.lseg_market_data_provider import LSEGMarketDataProvider
+from static_data_loader.core.models.Bond import Bond
+from static_data_loader.core.models.BondDefinition import BondDefinition
+from static_data_loader.core.models.Future import Future
+from static_data_loader.core.models.FutureDefinition import FutureDefinition
 
 
 def convert_contract_symbol(raw_contract: str) -> str:
