@@ -1,45 +1,8 @@
-from dataclasses import dataclass
 from datetime import datetime
 from typing import Callable
-
-@dataclass
-class BasketEntry:
-    isin: str
-    conversion_factor: float
-
-@dataclass
-class DeliverableBasket:
-    entries: dict[str, BasketEntry]
-
-@dataclass
-class FuturesContract:
-    ric: str
-
-@dataclass
-class BondState:
-    isin: str
-    conversion_factor: float
-    bid: float | None = None
-    ask: float | None = None
-    last_updated: datetime | None = None
-
-@dataclass
-class FuturesState:
-    ric: str
-    bid: float | None = None
-    ask: float | None = None
-    last_updated: datetime | None = None
-
-@dataclass(frozen=True)
-class BasisCalcInput:
-    isin: str
-    bond_bid: float
-    bond_ask: float
-    conversion_factor: float
-    futures_bid: float
-    futures_ask: float
-    bond_tick_ts: datetime
-    futures_tick_ts: datetime
+    
+from calculation_engine.gross_basis_calculation_engine import GrossBasisResult
+from calculation_engine.models import BasisCalcInput, BondState, DeliverableBasket, FuturesContract, FuturesState
 
 class TickStateStore:
     def __init__(self, basket: DeliverableBasket, futures: FuturesContract):
@@ -49,25 +12,34 @@ class TickStateStore:
         }
         self._futures = FuturesState(ric=futures.ric)
         self._callbacks: list[Callable[[BasisCalcInput], None]] = []
+        self._gross_basis: float = 0.0
 
     def subscribe(self, cb: Callable[[BasisCalcInput], None]) -> None:
         self._callbacks.append(cb)
 
-    def update_bond(self, isin: str, bid: float, ask: float, ts: datetime) -> None:
+    def update_bond(self, isin: str, bid: float | None, ask: float | None, ts: datetime) -> None:
         bond = self._bonds.get(isin)
         if bond is None:
             return
-        bond.bid = bid
-        bond.ask = ask
+        if bid is not None:
+            bond.bid = bid
+        if ask is not None:
+            bond.ask = ask
         bond.last_updated = ts
         self._notify(bond)
 
-    def update_futures(self, bid: float, ask: float, ts: datetime) -> None:
-        self._futures.bid = bid
-        self._futures.ask = ask
+    def update_futures(self, bid: float | None, ask: float | None, ts: datetime) -> None:
+        if bid is not None:
+            self._futures.bid = bid
+        if ask is not None:
+            self._futures.ask = ask
         self._futures.last_updated = ts
         for bond in self._bonds.values():
             self._notify(bond)
+    
+    def update_gross_basis(self, gross_basis_result: GrossBasisResult) -> None:
+        print(f"Updated gross basis: {gross_basis_result.gross_basis:.4f}")
+        self._gross_basis = gross_basis_result.gross_basis
 
     def _notify(self, bond: BondState) -> None:
         f = self._futures

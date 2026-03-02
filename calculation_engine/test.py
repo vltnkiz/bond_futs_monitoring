@@ -3,12 +3,12 @@ from datetime import datetime, timezone
 from calculation_engine.gross_basis_calculation_engine import (
     GrossBasisEngine,
 )
-from calculation_engine.tick_state_storage import (
+from calculation_engine.models import (
     BasketEntry,
     DeliverableBasket,
-    FuturesContract,
-    TickStateStore,
+    FuturesContract
 )
+from calculation_engine.tick_state_storage import TickStateStore
 
 if __name__ == "__main__":
     basket  = DeliverableBasket(entries={
@@ -22,7 +22,7 @@ if __name__ == "__main__":
     store.subscribe(engine.on_calc_input)
 
     # wire a consumer
-    engine.subscribe(lambda r: print(f"{r.isin} gross basis: {r.gross_basis:.4f}"))
+    engine.subscribe(store.update_gross_basis)
 
     # simulate incoming ticks
     store.update_futures(bid=132.50, ask=132.51, ts=datetime.now(timezone.utc))

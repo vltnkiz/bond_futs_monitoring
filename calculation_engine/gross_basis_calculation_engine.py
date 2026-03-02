@@ -1,21 +1,11 @@
-from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Callable
+
+from calculation_engine.models import GrossBasisResult
 from .tick_state_storage import BasisCalcInput
 import logging
 
 logger = logging.getLogger(__name__)
-
-@dataclass
-class GrossBasisResult:
-    isin: str
-    gross_basis: float
-    futures_mid: float
-    bond_mid: float
-    conversion_factor: float
-    calc_timestamp: datetime
-    bond_tick_ts: datetime
-    futures_tick_ts: datetime
 
 class GrossBasisEngine:
     def __init__(self):
