@@ -1,13 +1,13 @@
 from datetime import datetime, timezone
 
-from core.calculation_engines.calculation_engine import CalcEngine
+from core.calculation_engines.calculation_engine import CalculationEngine
 from core.models.calculations import GrossBasisCalcInput, GrossBasisCalcResult
 import logging
 
 logger = logging.getLogger(__name__)
 
 
-class GrossBasisCalcEngine(CalcEngine[GrossBasisCalcInput, GrossBasisCalcResult]):
+class GrossBasisCalculationEngine(CalculationEngine[GrossBasisCalcInput, GrossBasisCalcResult]):
 
     def _compute(self, i: GrossBasisCalcInput) -> GrossBasisCalcResult | None:
         try:

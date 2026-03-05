@@ -8,7 +8,7 @@ CalcInput = TypeVar("CalcInput")
 CalcResult = TypeVar("CalcResult")
 
 
-class CalcEngine(ABC, Generic[CalcInput, CalcResult]):
+class CalculationEngine(ABC, Generic[CalcInput, CalcResult]):
 
     def __init__(self):
         self._callbacks: list[Callable[[CalcResult], None]] = []
