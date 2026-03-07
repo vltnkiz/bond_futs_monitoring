@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from src.core.modules.market_data_feed.core.models.tick_handler import TickHandler
+from src.core.models.tick_handler import TickHandler
 
 class MarketDataFeed(ABC):
     @abstractmethod

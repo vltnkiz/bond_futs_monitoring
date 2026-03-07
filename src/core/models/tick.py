@@ -6,11 +6,13 @@ from typing import Optional
 @dataclass
 class Tick:
     ric: str
-    mid: Optional[float]
-    bid: Optional[float]
-    ask: Optional[float]
-    bidsize: Optional[int]
-    asksize: Optional[int] 
-    timestamp: datetime.datetime
+    mid: Optional[float] = None
+    bid: Optional[float] = None
+    ask: Optional[float] = None
+    bid_timestamp: Optional[datetime.datetime] = None
+    ask_timestamp: Optional[datetime.datetime] = None
+    bidsize: Optional[int] = None
+    asksize: Optional[int] = None
+    timestamp: Optional[datetime.datetime] = None
     is_snapshot: bool = False
     raw: dict = None

@@ -1,18 +1,19 @@
 from dataclasses import dataclass
-from datetime import datetime, timedelta
-from typing import Callable, Generic, TypeVar
+from datetime import datetime, timedelta, timezone
+from typing import Callable, Optional, TypeVar
 
 from src.core.models.bond import Bond
 from src.core.models.future import Future
 from src.core.models.calculations import CalcInput
+from src.core.models.tick import Tick
 
 TCalcInput = TypeVar("TCalcInput", bound=CalcInput)
 
 @dataclass
 class StalenessConfig:
-    max_bond_quote_age: timedelta        # max age of bond bid or ask individually
-    max_futures_quote_age: timedelta     # max age of futures bid or ask individually
-    max_cross_instrument_age: timedelta  # max age difference between bond and futures snapshots
+    max_bond_quote_age: timedelta = timedelta(seconds=30)        # max age of bond bid or ask individually
+    max_futures_quote_age: timedelta = timedelta(seconds=30)     # max age of futures bid or ask individually
+    max_cross_instrument_age: timedelta = timedelta(seconds=60)  # max age difference between bond and futures snapshots
 
 @dataclass
 class _FutureState():
@@ -37,45 +38,32 @@ class TickStateStore:
         future: Future,
         bonds: list[Bond],
         calc_input_factory: Callable[[_FutureState, _BondState], TCalcInput],
-        staleness_config: StalenessConfig,
+        staleness_config: Optional[StalenessConfig] = None,
     ) -> None: 
         self._future: _FutureState = _FutureState(future=future)      
         self._bonds: dict[str, _BondState] = {bond.ISIN: _BondState(bond=bond) for bond in bonds}
         self._calc_input_factory = calc_input_factory
         self._callbacks: list[Callable[[TCalcInput], None]] = []
-        self._staleness_config = staleness_config
+        self._staleness_config = staleness_config or StalenessConfig()
         
 
-    def update_bond(
-        self,
-        isin: str,
-        bid: float | None,
-        ask: float | None,
-        bid_ts: datetime | None,
-        ask_ts: datetime | None,
-    ) -> None: 
-        if isin not in self._bonds:
+    def update_bond(self, tick: Tick) -> None: 
+        if tick.ric not in self._bonds:
             return
         
-        bond_state = self._bonds[isin]
-        bond_state.bid = bid
-        bond_state.ask = ask
-        bond_state.bid_timestamp = bid_ts
-        bond_state.ask_timestamp = ask_ts
+        bond_state = self._bonds[tick.ric]
+        bond_state.bid = tick.bid
+        bond_state.ask = tick.ask
+        bond_state.bid_timestamp = tick.bid_timestamp
+        bond_state.ask_timestamp = tick.ask_timestamp
 
         self._notify(bond=bond_state)
 
-    def update_future(
-        self,
-        bid: float | None,
-        ask: float | None,
-        bid_ts: datetime | None,
-        ask_ts: datetime | None,
-    ) -> None:
-        self._future.bid = bid
-        self._future.ask = ask
-        self._future.bid_timestamp = bid_ts
-        self._future.ask_timestamp = ask_ts
+    def update_future(self, tick: Tick) -> None:
+        self._future.bid = tick.bid
+        self._future.ask = tick.ask
+        self._future.bid_timestamp = tick.bid_timestamp
+        self._future.ask_timestamp = tick.ask_timestamp
 
         self._notify(future=self._future)
 
@@ -88,7 +76,7 @@ class TickStateStore:
         if bond.bid is None or bond.ask is None:
             return False
             
-        now = datetime.now()
+        now = datetime.now(timezone.utc)
         # Check individual staleness
         if self._future.bid_timestamp is None or self._future.ask_timestamp is None:
             return False

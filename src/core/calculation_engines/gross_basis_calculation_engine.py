@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 
-from core.calculation_engines.calculation_engine import CalculationEngine
-from core.models.calculations import GrossBasisCalcInput, GrossBasisCalcResult
+from .calculation_engine import CalculationEngine
+from src.core.models.calculations import GrossBasisCalcInput, GrossBasisCalcResult
 import logging
 
 logger = logging.getLogger(__name__)
@@ -16,15 +16,12 @@ class GrossBasisCalculationEngine(CalculationEngine[GrossBasisCalcInput, GrossBa
             gross_basis = bond_mid - (futures_mid * i.conversion_factor)
 
             return GrossBasisCalcResult(
-                isin=i.isin,
-                gross_basis=gross_basis,
-                futures_mid=futures_mid,
-                bond_mid=bond_mid,
-                conversion_factor=i.conversion_factor,
+                future_id=i.future_id,
+                bond_id=i.bond_id,
                 calc_timestamp=datetime.now(timezone.utc),
-                bond_tick_ts=i.bond_tick_ts,
-                futures_tick_ts=i.futures_tick_ts,
+                gross_basis=gross_basis,
+                gross_basis_timestamp=datetime.now(timezone.utc),
             )
         except Exception as e:
-            logger.error(f"Compute failed for {i.isin}: {e}")
+            logger.error(f"Compute failed for {i.bond_id}: {e}")
             return None

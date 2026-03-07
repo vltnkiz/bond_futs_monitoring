@@ -41,12 +41,10 @@ class LSEGMarketDataFeed(MarketDataFeed):
         def _to_tick(fields: dict, ric: str, is_snapshot: bool) -> Tick:
             return Tick(
                 ric=ric,
-                mid=fields.get("CF_MID"),
                 bid=fields.get("CF_BID"),
                 ask=fields.get("CF_ASK"),
-                bidszie=fields.get("BIDSIZE"),
-                asksize=fields.get("ASKSIZE"),
-                timestamp=datetime.datetime.now(tz=datetime.timezone.utc),
+                bid_timestamp=datetime.datetime.now(tz=datetime.timezone.utc),
+                ask_timestamp=datetime.datetime.now(tz=datetime.timezone.utc),
                 is_snapshot=is_snapshot,
                 raw=fields,
             )
