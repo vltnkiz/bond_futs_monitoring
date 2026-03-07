@@ -3,3 +3,5 @@ tools/
 __pycache__/
 notes.txt
 lseg-data.config.json
+.benchmarks/
+.pytest_cache/
