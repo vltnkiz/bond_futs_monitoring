@@ -51,7 +51,7 @@ if __name__ == "__main__":
     feed = LSEGMarketDataFeed()
     bond_rics = [f"{bond.ISIN[0:2]}{bond.ISIN[5:11]}=" for bond in bonds]
     ric_to_isin = {f"{bond.ISIN[0:2]}{bond.ISIN[5:11]}=": bond.ISIN for bond in bonds}
-    feed.subscribe(instruments=[future_ric] + bond_rics, fields=['CF_BID', 'CF_ASK'])
+    feed.subscribe(instruments=[future_ric] + bond_rics + ["EUROND=TTKL"], fields=['CF_BID', 'CF_ASK'])
     
     def on_tick(tick):
         print(f"Tick received: {tick}")
