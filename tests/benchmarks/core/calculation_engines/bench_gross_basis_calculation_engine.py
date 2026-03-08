@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 import pytest
 
 from src.core.calculation_engines.gross_basis_calculation_engine import GrossBasisCalculationEngine
-from src.core.models.calculations import GrossBasisCalcInput
+from src.core.models.calculations.calculations import GrossBasisCalcInput
 
 _NOW = datetime(2026, 3, 7, 12, 0, 0, tzinfo=timezone.utc)
 

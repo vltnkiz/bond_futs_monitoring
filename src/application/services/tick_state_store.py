@@ -4,7 +4,7 @@ from typing import Callable, Optional, TypeVar
 
 from src.core.models.bond import Bond
 from src.core.models.future import Future
-from src.core.models.calculations import CalcInput
+from src.core.models.calculations.calculations import CalcInput
 from src.core.models.tick import Tick
 
 TCalcInput = TypeVar("TCalcInput", bound=CalcInput)

@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-from src.application.convert_contract_to_symbol import convert_contract_symbol
+from src.core.utils.convert_contract_to_symbol import convert_contract_symbol
 from src.core.models.future import Future
 from src.core.models.future_definition import FutureDefinition
 from src.core.ports.driven import StaticMarketDataProvider

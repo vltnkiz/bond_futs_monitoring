@@ -1,7 +1,7 @@
 
 import pandas as pd
 
-from src.application.convert_contract_to_symbol import convert_contract_symbol
+from src.core.utils.convert_contract_to_symbol import convert_contract_symbol
 from src.core.models.bond import Bond
 from src.core.models.bond_definition import BondDefinition
 

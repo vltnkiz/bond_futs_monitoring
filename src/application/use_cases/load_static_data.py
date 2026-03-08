@@ -7,12 +7,12 @@ from src.adapters.driven.eurex_futures_basket_downloader import (
     EurexFuturesBasketDownloader,
 )
 from src.adapters.driven.lseg_market_data_provider import LSEGMarketDataProvider
-from src.application.update_bond_definition import update_bond_definition
-from src.application.update_future_definition import update_future_definition
+from src.application.use_cases.update_bond_definition import update_bond_definition
+from src.application.use_cases.update_future_definition import update_future_definition
 
 
 def load_all_static_data():
-    project_root = Path(__file__).parent.parent.parent
+    project_root = Path(__file__).parent.parent.parent.parent
     save_dir = project_root / "data" / "eurex"
     downloader = EurexFuturesBasketDownloader()
     futures_basket_file = downloader.download(save_dir=save_dir)

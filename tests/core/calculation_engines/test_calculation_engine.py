@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 import pytest
 
 from src.core.calculation_engines.calculation_engine import CalculationEngine
-from src.core.models.calculations import CalcInput, CalcResult
+from src.core.models.calculations.calculations import CalcInput, CalcResult
 
 class _EchoEngine(CalculationEngine[int, int]):
     def _compute(self, input: int) -> int | None:

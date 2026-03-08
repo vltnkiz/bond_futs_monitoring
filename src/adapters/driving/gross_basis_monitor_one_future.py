@@ -3,8 +3,8 @@ import queue
 import threading
 
 from src.adapters.driven.lseg_market_data_feed import LSEGMarketDataFeed
-from src.application.tick_state_store import TickStateStore
-from src.application.calc_input_factories import gross_basis_calc_input_factory
+from src.application.services.tick_state_store import TickStateStore
+from src.application.services.calc_input_factories import gross_basis_calc_input_factory
 from src.core.calculation_engines import GrossBasisCalculationEngine
 from src.core.models.bond import Bond
 from src.core.models.future import Future
