@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, Optional
 
 
 class Bond:    
@@ -8,13 +8,17 @@ class Bond:
         CouponRate: float, 
         MaturityDate: str,
         DayCountConv: str,
-        CF: Dict[str, float] = None
+        CF: Dict[str, float] = None,
+        NextCouponDate: Optional[str] = None,
+        LastCouponDate: Optional[str] = None,
     ):
         self.ISIN = ISIN
         self.CouponRate = CouponRate
         self.MaturityDate = MaturityDate
         self.DayCountConv = DayCountConv
         self.CF = CF if CF is not None else {}
+        self.NextCouponDate = NextCouponDate
+        self.LastCouponDate = LastCouponDate
     
     def add_conversion_factor(self, future: str, conversion_factor: float) -> None:
         self.CF[future] = conversion_factor
@@ -26,6 +30,7 @@ class Bond:
         return (
             f"Bond(ISIN={self.ISIN}, CouponRate={self.CouponRate}, "
             f"MaturityDate={self.MaturityDate}, DayCountConv={self.DayCountConv}, "
+            f"NextCouponDate={self.NextCouponDate}, LastCouponDate={self.LastCouponDate}, "
             f"CF={dict(self.CF)})"
         )
     
@@ -36,17 +41,24 @@ class Bond:
             f"  Coupon: {self.CouponRate:.6f}\n"
             f"  Maturity: {self.MaturityDate}\n"
             f"  Day Count: {self.DayCountConv}\n"
+            f"  Next Coupon: {self.NextCouponDate}\n"
+            f"  Last Coupon: {self.LastCouponDate}\n"
             f"  Conversion Factors: {cf_str}"
         )
     
     def to_dict(self) -> dict:
-        return {
+        d = {
             "ISIN": self.ISIN,
             "CouponRate": self.CouponRate,
             "MaturityDate": self.MaturityDate,
             "DayCountConv": self.DayCountConv,
-            "CF": self.CF
+            "CF": self.CF,
         }
+        if self.NextCouponDate is not None:
+            d["NextCouponDate"] = self.NextCouponDate
+        if self.LastCouponDate is not None:
+            d["LastCouponDate"] = self.LastCouponDate
+        return d
     
     @classmethod
     def from_dict(cls, data: dict) -> 'Bond':
@@ -55,5 +67,7 @@ class Bond:
             CouponRate=data["CouponRate"],
             MaturityDate=data["MaturityDate"],
             DayCountConv=data["DayCountConv"],
-            CF=data.get("CF", {})
+            CF=data.get("CF", {}),
+            NextCouponDate=data.get("NextCouponDate"),
+            LastCouponDate=data.get("LastCouponDate"),
         )

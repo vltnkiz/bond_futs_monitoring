@@ -16,15 +16,17 @@ class LSEGMarketDataProvider(StaticMarketDataProvider):
             if os.path.exists(default_path):
                 os.environ["LD_LIB_CONFIG_PATH"] = default_path
 
-    def get(self, ric: str, field: str) -> Optional[str]:
+    def get(self, ric: str, field: str, view=None) -> Optional[str]:
         try:
             # Open LSEG session
             ld.open_session()
             
             try:
+                if view is None:
+                    view = search.Views.BOND_FUT_OPT_QUOTES
                 # Fetch data
                 response = search.Definition(
-                    view=search.Views.BOND_FUT_OPT_QUOTES,
+                    view=view,
                     select=f"RIC,{field}",
                     filter=f"RIC eq '{ric}'",
                     top=1
