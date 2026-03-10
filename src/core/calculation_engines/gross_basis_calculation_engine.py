@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 
 from .calculation_engine import CalculationEngine
-from src.core.models.calculations.calculations import GrossBasisCalcInput, GrossBasisCalcResult
+from src.core.models.calculations.gross_basis_calculations import GrossBasisCalcInput, GrossBasisCalcResult
 import logging
 
 logger = logging.getLogger(__name__)

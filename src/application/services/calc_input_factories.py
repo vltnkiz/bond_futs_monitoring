@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 
 from src.application.services.repo_curve_service import RepoCurveService
 from src.application.services.tick_state_store import _FutureState, _BondState
-from src.core.models.calculations.calculations import GrossBasisCalcInput
+from src.core.models.calculations.gross_basis_calculations import GrossBasisCalcInput
 from src.core.models.calculations.carry_calculations import CarryCalcInput
 
 
@@ -24,12 +24,12 @@ def gross_basis_calc_input_factory(future_state: _FutureState, bond_state: _Bond
 
 def carry_calc_input_factory(bond_state: _BondState, future_state: _FutureState, repo_curve_service: RepoCurveService) -> CarryCalcInput:
     return CarryCalcInput(
-        dirty_price = bond_state.dirty_price,
+        clean_price = (bond_state.bid + bond_state.ask) / 2,
         coupon_rate = bond_state.bond.coupon_rate,
         delivery_date = bond_state.bond.next_delivery_date,
         repo_rate = repo_curve_service.get_rate(future_state.delivery_date),
-        next_coupon_date = bond_state.bond.get_next_coupon_date(),
-        last_coupon_date = bond_state.bond.get_last_coupon_date(),
+        next_coupon_date = bond_state.bond.next_coupon_date,
+        last_coupon_date = bond_state.bond.last_coupon_date,
         coupon_income_day_convention = "ACT/ACT",
         financing_day_convention = "ACT/365"
     )

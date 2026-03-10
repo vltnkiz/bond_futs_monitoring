@@ -1,18 +1,21 @@
-from datetime import datetime
+from dataclasses import dataclass
+from datetime import date, datetime
 
 from .calculations import CalcInput, CalcResult
 
+
+@dataclass(frozen=True)
 class CarryCalcInput(CalcInput):
-    dirty_price: float
+    clean_price: float
     coupon_rate: float
-    delivery_date: datetime
+    delivery_date: date
     repo_rate: float
     next_coupon_date: datetime
     last_coupon_date: datetime
     coupon_income_day_convention: str = "ACT/ACT"
     financing_day_convention: str = "ACT/365"
 
+
+@dataclass(frozen=True)
 class CarryCalcResult(CalcResult):
     carry: float
-    carry_timestamp: datetime
-    bond_id: str

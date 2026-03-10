@@ -11,23 +11,31 @@ class CarryCalculationEngine(CalculationEngine):
     def _compute(self, i: CarryCalcInput) -> CarryCalcResult | None:
         try:
             today = i.input_timestamp.date()
-            days_to_delivery = (i.delivery_date - today).days
-            coupon_period = (i.next_coupon_date - i.last_coupon_date).days
+            next_coupon = i.next_coupon_date.date()
+            last_coupon = i.last_coupon_date.date()
 
-            if i.next_coupon_date <= i.delivery_date:
-                days_after_coupon = (i.delivery_date - i.next_coupon_date).days
+            days_to_delivery = (i.delivery_date - today).days
+            coupon_period = (next_coupon - last_coupon).days
+
+            days_since_last_coupon = (today - last_coupon).days
+            accrued = i.coupon_rate * days_since_last_coupon / coupon_period
+            dirty_price = i.clean_price + accrued
+
+            if next_coupon <= i.delivery_date:
+                days_after_coupon = (i.delivery_date - next_coupon).days
                 coupon_income = i.coupon_rate + (i.coupon_rate * days_after_coupon / coupon_period)
             else:
                 coupon_income = i.coupon_rate * days_to_delivery / coupon_period
 
-            financing_cost = i.dirty_price * i.repo_rate * days_to_delivery / 365
-            
+            financing_cost = dirty_price * i.repo_rate * days_to_delivery / 365
+
             carry = coupon_income - financing_cost
 
             return CarryCalcResult(
-                bond_id=i.bond_id,   
+                future_id=i.future_id,
+                bond_id=i.bond_id,
                 carry=carry,
-                carry_timestamp=datetime.now(timezone.utc), 
+                calc_timestamp=datetime.now(timezone.utc),
             )
         except Exception as e:
             logger.error(f"Compute failed for {i.bond_id}: {e}")

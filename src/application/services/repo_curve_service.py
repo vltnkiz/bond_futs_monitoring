@@ -10,6 +10,8 @@ class RepoCurveService:
         tenor_date = self._ric_to_tenor.get(tick.ric)
         if tenor_date is None:
             return
+        if tick.bid is None or tick.ask is None:
+            return
         mid = (tick.bid + tick.ask) / 2
         self._curve.update(tenor_date, mid)
 

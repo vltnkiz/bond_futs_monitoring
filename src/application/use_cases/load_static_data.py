@@ -1,12 +1,8 @@
-
 from pathlib import Path
 
 import pandas as pd
-import lseg.data as ld
 
-from src.adapters.driven.eurex_futures_basket_downloader import (
-    EurexFuturesBasketDownloader,
-)
+from src.adapters.driven.eurex_futures_basket_downloader import EurexFuturesBasketDownloader
 from src.adapters.driven.lseg_market_data_provider import LSEGMarketDataProvider
 from src.application.use_cases.update_bond_definition import update_bond_definition
 from src.application.use_cases.update_future_definition import update_future_definition
@@ -31,11 +27,7 @@ def load_all_static_data():
     update_future_definition(df, future_json_file, market_data_provider)
 
     bond_definition = BondDefinition(bond_json_file)
-    ld.open_session()
-    try:
-        enrich_coupon_dates(bond_definition)
-    finally:
-        ld.close_session()
+    enrich_coupon_dates(bond_definition)
 
 if __name__ == "__main__":
     load_all_static_data()
