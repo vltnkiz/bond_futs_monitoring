@@ -53,7 +53,6 @@ class FuturePortfolio:
         except json.JSONDecodeError:
             _logger.warning("%s is empty or invalid. Starting with empty portfolio.", self.json_file)
             self.futures = {}
-        return False
     
     def remove_deliverable_bond(self, contract_symbol: str, isin: str) -> bool:
         if contract_symbol in self.futures:

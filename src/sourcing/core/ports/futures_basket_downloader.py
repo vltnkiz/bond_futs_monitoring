@@ -4,5 +4,5 @@ from pathlib import Path
 
 class FuturesBasketDownloader(ABC):
     @abstractmethod
-    def download(self, save_dir: str) -> Path:
+    def download(self, save_dir: Path) -> Path:
         pass

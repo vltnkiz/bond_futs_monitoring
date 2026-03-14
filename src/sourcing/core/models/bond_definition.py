@@ -52,6 +52,4 @@ class BondPortfolio:
             self.bonds = {}
         except json.JSONDecodeError:
             _logger.warning("%s is empty or invalid. Starting with empty portfolio.", self.json_file)
-            self.bonds[isin].add_conversion_factor(future, cf)
-            return True
-        return False
+            self.bonds = {}
