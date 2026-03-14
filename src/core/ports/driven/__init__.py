@@ -1,4 +1,3 @@
-from src.core.ports.driven.static_market_data_provider import StaticMarketDataProvider
-from src.core.ports.driven.futures_basket_downloader import FuturesBasketDownloader
+from src.core.ports.driven.market_data_feed import MarketDataFeed
 
-__all__ = ["StaticMarketDataProvider", "FuturesBasketDownloader"]
+__all__ = ["MarketDataFeed"]

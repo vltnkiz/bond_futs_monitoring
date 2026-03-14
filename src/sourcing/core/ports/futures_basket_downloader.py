@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
-from typing import Optional
+from pathlib import Path
 
 
 class FuturesBasketDownloader(ABC):
     @abstractmethod
-    def download(self, save_dir: str) -> Optional[str]:
+    def download(self, save_dir: str) -> Path:
         pass

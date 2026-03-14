@@ -5,3 +5,5 @@ notes.txt
 lseg-data.config.json
 .benchmarks/
 .pytest_cache/
+.github/
+.vscode/
