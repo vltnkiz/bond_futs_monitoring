@@ -1,6 +1,7 @@
 .venv
 tools/
 __pycache__/
+reports/
 notes.txt
 lseg-data.config.json
 .benchmarks/
