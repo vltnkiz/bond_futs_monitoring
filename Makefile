@@ -1,5 +1,8 @@
 .PHONY: test-sourcing refresh-all
 
+test-monitor:
+	pytest tests/net_basis_monitor
+
 test-sourcing:
 	pytest tests/sourcing
 
