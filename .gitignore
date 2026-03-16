@@ -8,3 +8,4 @@ lseg-data.config.json
 .pytest_cache/
 .github/
 .vscode/
+.sonarlint/
