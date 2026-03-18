@@ -2,6 +2,7 @@ import logging
 from typing import Optional
 from datetime import datetime, timezone
 
+from src.net_basis_monitor.core.models.curves.rate_curve import RateCurve
 from src.net_basis_monitor.core.models.market_state import BondMarketState, FutureMarketState
 from src.net_basis_monitor.core.models.value_objects.net_basis import NetBasis
 from src.net_basis_monitor.core.models.calculation_engines.gross_basis_calculation_engine import GrossBasisCalculationEngine
@@ -18,7 +19,7 @@ class NetBasisStrategy:
         bond_state: BondMarketState,
         future_state: FutureMarketState,
         gross_basis_engine: GrossBasisCalculationEngine,
-        carry_engine: CarryCalculationEngine
+        carry_engine: CarryCalculationEngine,
     ):
         self.bond_state = bond_state
         self.future_state = future_state
@@ -58,9 +59,6 @@ class NetBasisStrategy:
 
     def _is_data_sufficient(self) -> bool:
         if not self.bond_state.last_tick or not self.future_state.last_tick:
-            return False
-        if self.bond_state.repo_rate is None:
-            #logger.debug(f"Missing repo rate for {self.bond_state.instrument.isin}")
             return False
         return True
 
@@ -118,7 +116,7 @@ class NetBasisStrategy:
             clean_price=bond_mid_price,
             coupon_rate=bond.coupon_rate,
             delivery_date=future.delivery_date,
-            repo_rate=self.bond_state.repo_rate,
+            repo_rate=4.0,  # Placeholder, should be fetched from repo curve
             next_coupon_date=to_datetime(bond.next_coupon_date),
             last_coupon_date=to_datetime(bond.last_coupon_date),
             coupon_income_day_convention=bond.day_count_convention,

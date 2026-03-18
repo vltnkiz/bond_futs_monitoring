@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 from typing import Callable, Optional, TypeAlias
 
 
-@dataclass(frozen=True)
+@dataclass
 class Tick:
     ric: str
     mid: Optional[float] = None

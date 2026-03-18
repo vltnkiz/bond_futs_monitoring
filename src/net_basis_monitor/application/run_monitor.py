@@ -21,7 +21,7 @@ def build_monitor() -> tuple[MonitorNetBasisUseCase, list]:
     gross_basis_engine = GrossBasisCalculationEngine()
     carry_engine = CarryCalculationEngine()
 
-    future_ids = [f.contract_symbol for f in static_data_provider.get_all_futures()]
+    future_ids = [f.isin for f in static_data_provider.get_futures()]
     requests = MonitoringRequestBuilder(static_data_provider).build(future_ids)
 
     factory = NetBasisFactory(

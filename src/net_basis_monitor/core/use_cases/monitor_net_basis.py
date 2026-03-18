@@ -28,7 +28,7 @@ class MonitorNetBasisUseCase(NetBasisMonitor):
         self._engine, symbols = self._factory.create_engine(requests)
         
         if symbols:
-            self._market_data_feed.subscribe(symbols, fields=["BID", "ASK"])
+            self._market_data_feed.subscribe(symbols, fields=["CF_BID", "CF_ASK"])
             self._market_data_feed.start(on_tick=self._on_tick)
             logger.info(f"Started monitoring {len(symbols)} instruments.")
         else:
@@ -42,6 +42,7 @@ class MonitorNetBasisUseCase(NetBasisMonitor):
         self._subscribers.append(callback)
 
     def _on_tick(self, tick: Tick) -> None:
+        logger.debug("Processing tick: ric=%s bid=%s ask=%s", tick.ric, tick.bid, tick.ask)
         if self._engine:
             results = self._engine.process_tick(tick)
             for result in results:

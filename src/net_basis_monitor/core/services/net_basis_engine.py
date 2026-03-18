@@ -23,9 +23,11 @@ class NetBasisEngine:
 
     def process_tick(self, tick: Tick) -> List[NetBasis]:
         results = []
+        logger.debug("Processing tick: ric=%s bid=%s ask=%s", tick.ric, tick.bid, tick.ask)
         
         state = self._states.get(tick.ric)
         if not state:
+            logger.debug("No state registered for RIC '%s'. Registered: %s", tick.ric, list(self._states.keys()))
             return results
         
         state.on_tick(tick)
@@ -38,20 +40,20 @@ class NetBasisEngine:
         
         return results
 
-    def update_repo_rate(self, isin: str, rate: float) -> List[NetBasis]:
+    def update_repo_rate(self, ric: str, rate: float) -> List[NetBasis]:
         results = []
-        state = self._states.get(isin)
+        state = self._states.get(ric)
         
         if isinstance(state, BondMarketState):
             state.set_repo_rate(rate)
             
             # Recalculate dependent strategies
-            strategies = self._routing_table.get(isin, [])
+            strategies = self._routing_table.get(ric, [])
             for strategy in strategies:
                 result = strategy.compute()
                 if result:
                     results.append(result)
         else:
-            logger.warning(f"Received repo rate for {isin}, but it is not monitored or not a bond.")
+            logger.warning(f"Received repo rate for {ric}, but it is not monitored or not a bond.")
             
         return results

@@ -1,8 +1,7 @@
-from dataclasses import dataclass, field
-from typing import List
+from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
 class MonitoringRequest:
     future_id: str
-    bond_ids: List[str] = field(default_factory=list)
+    bond_id: str

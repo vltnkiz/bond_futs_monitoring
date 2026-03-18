@@ -1,3 +1,4 @@
+import logging
 import os
 import datetime
 import lseg.data as ld
@@ -6,6 +7,8 @@ from lseg.data.content import pricing
 from src.net_basis_monitor.core.models.value_objects.tick import Tick, TickHandler
 from src.net_basis_monitor.core.ports import MarketDataFeed
 from typing import Any, Optional
+
+logger = logging.getLogger(__name__)
 
 class LSEGMarketDataFeed(MarketDataFeed):
     __session: Optional[ld.Session] = None
@@ -24,8 +27,10 @@ class LSEGMarketDataFeed(MarketDataFeed):
                 os.environ["LD_LIB_CONFIG_PATH"] = default_path
         
         # Initialize LSEG session
+        logger.info("Opening LSEG session...")
         ld.open_session()
         self.__session = ld
+        logger.info("LSEG session opened successfully.")
 
     def subscribe(self, instruments: list[str], fields: list[str]) -> None:
         self.__instruments_subscribed.update(instruments)
@@ -39,7 +44,7 @@ class LSEGMarketDataFeed(MarketDataFeed):
     
     def start(self, on_tick: TickHandler) -> None:
         def _to_tick(fields: dict, ric: str, is_snapshot: bool) -> Tick:
-            return Tick(
+            tick = Tick(
                 ric=ric,
                 bid=fields.get("CF_BID"),
                 ask=fields.get("CF_ASK"),
@@ -48,15 +53,24 @@ class LSEGMarketDataFeed(MarketDataFeed):
                 is_snapshot=is_snapshot,
                 raw=fields,
             )
+            logger.debug("Tick received: ric=%s bid=%s ask=%s snapshot=%s", ric, tick.bid, tick.ask, is_snapshot)
+            return tick
+
+        instruments = list(self.__instruments_subscribed)
+        fields = list(self.__fields_subscribed)
+        logger.info("Opening LSEG stream for %d instruments: %s", len(instruments), instruments)
+        logger.info("Subscribed fields: %s", fields)
 
         self.__stream = pricing.Definition(
-            universe=list(self.__instruments_subscribed),
-            fields=list(self.__fields_subscribed),
+            universe=instruments,
+            fields=fields,
         ).get_stream()
 
         self.__stream.on_update(lambda fields, instrument, stream: on_tick(_to_tick(fields, instrument, is_snapshot=False)))
         self.__stream.on_refresh(lambda fields, instrument, stream: on_tick(_to_tick(fields, instrument, is_snapshot=True)))
+        self.__stream.on_status(lambda status, instrument, stream: logger.warning("Stream status for %s: %s", instrument, status))
         self.__stream.open(with_updates=True)
+        logger.info("LSEG stream opened, waiting for ticks...")
     
     def stop(self) -> None:
         if self.__stream:

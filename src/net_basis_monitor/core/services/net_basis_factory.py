@@ -1,6 +1,7 @@
 import logging
-from typing import List, Tuple, Set
+from typing import List, Tuple
 
+from src.net_basis_monitor.core.models.curves.rate_curve import RateCurve
 from src.net_basis_monitor.core.models.value_objects.monitoring_request import MonitoringRequest
 from src.net_basis_monitor.core.models.market_state import BondMarketState, FutureMarketState
 from src.net_basis_monitor.core.models.net_basis_strategy import NetBasisStrategy
@@ -16,7 +17,7 @@ class NetBasisFactory:
         self,
         static_data_provider: StaticDataProvider,
         gross_basis_engine: GrossBasisCalculationEngine,
-        carry_engine: CarryCalculationEngine
+        carry_engine: CarryCalculationEngine,
     ):
         self._static_data_provider = static_data_provider
         self._gross_basis_engine = gross_basis_engine
@@ -25,21 +26,11 @@ class NetBasisFactory:
     def create_engine(self, requests: List[MonitoringRequest]) -> Tuple[NetBasisEngine, List[str]]:
         engine = NetBasisEngine()
 
-        unique_bond_ids = set()
-        unique_future_ids = set()
-        for req in requests:
-            unique_future_ids.add(req.future_id)
-            unique_bond_ids.update(req.bond_ids)
-
-        bonds = self._static_data_provider.get_bonds(list(unique_bond_ids))
-        futures = self._static_data_provider.get_futures(list(unique_future_ids))
-        
-        bond_map = {b.isin: b for b in bonds}
-        future_map = {f.contract_symbol: f for f in futures}
+        bond_map = {b.isin: b for b in self._static_data_provider.get_bonds()}
+        future_map = {f.contract_symbol: f for f in self._static_data_provider.get_futures()}
 
         instruments_to_monitor = set()
-        
-        created_states = {} 
+        created_states: dict = {}
 
         for req in requests:
             future_def = future_map.get(req.future_id)
@@ -47,34 +38,29 @@ class NetBasisFactory:
                 logger.warning(f"Future {req.future_id} not found. Skipping.")
                 continue
 
+            bond_def = bond_map.get(req.bond_id)
+            if not bond_def:
+                logger.warning(f"Bond {req.bond_id} not found. Skipping.")
+                continue
+
             if req.future_id not in created_states:
                 f_state = FutureMarketState(instrument=future_def)
                 created_states[req.future_id] = f_state
                 engine.register_state(f_state)
-                instruments_to_monitor.add(req.future_id)
-            
-            future_state = created_states[req.future_id]
+                instruments_to_monitor.add(f_state.instrument_id)
 
-            for bond_id in req.bond_ids:
-                bond_def = bond_map.get(bond_id)
-                if not bond_def:
-                    logger.warning(f"Bond {bond_id} not found. Skipping.")
-                    continue
-            
-                if bond_id not in created_states:
-                    b_state = BondMarketState(instrument=bond_def)
-                    created_states[bond_id] = b_state
-                    engine.register_state(b_state)
-                    instruments_to_monitor.add(bond_id)
-                
-                bond_state = created_states[bond_id]
+            if req.bond_id not in created_states:
+                b_state = BondMarketState(instrument=bond_def)
+                created_states[req.bond_id] = b_state
+                engine.register_state(b_state)
+                instruments_to_monitor.add(b_state.instrument_id)
 
-                strategy = NetBasisStrategy(
-                    bond_state=bond_state,
-                    future_state=future_state,
-                    gross_basis_engine=self._gross_basis_engine,
-                    carry_engine=self._carry_engine
-                )
-                engine.register_strategy(strategy)
+            strategy = NetBasisStrategy(
+                bond_state=created_states[req.bond_id],
+                future_state=created_states[req.future_id],
+                gross_basis_engine=self._gross_basis_engine,
+                carry_engine=self._carry_engine
+            )
+            engine.register_strategy(strategy)
 
         return engine, list(instruments_to_monitor)

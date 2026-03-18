@@ -19,7 +19,8 @@ class MarketState(ABC, Generic[InstrumentT]):
     _last_tick: Optional[Tick] = field(default=None, init=False)
 
     def on_tick(self, tick: Tick) -> None:
-        if tick.bid is not None or tick.ask is not None:
+        logger.debug("Received tick for %s: %s", self.instrument_id, tick)
+        if tick.bid is not None and tick.ask is not None:
             tick.mid = (tick.bid + tick.ask) / 2.0
         self._last_tick = tick
 
@@ -62,7 +63,7 @@ class BondMarketState(MarketState[Bond]):
 
     @property
     def instrument_id(self) -> str:
-        return self.instrument.isin
+        return self.instrument.lseg_ric
 
 
 @dataclass

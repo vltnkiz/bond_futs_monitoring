@@ -1,7 +1,7 @@
 import json
-from datetime import datetime
+from datetime import datetime, date
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from src.net_basis_monitor.core.models import Bond, Future
 from src.net_basis_monitor.core.ports.static_data_provider import StaticDataProvider
@@ -24,6 +24,12 @@ class JsonStaticDataProvider(StaticDataProvider):
         self._load_futures(Path(future_definition_path))
 
 
+    @staticmethod
+    def _parse_optional_date(value: Optional[str]) -> Optional[date]:
+        if not value:
+            return None
+        return date.fromisoformat(str(value)[:10])
+
     def _load_bonds(self, path: Path) -> None:
         with open(path, "r") as f:
             data = json.load(f)
@@ -34,6 +40,8 @@ class JsonStaticDataProvider(StaticDataProvider):
                 maturity_date=datetime.strptime(entry["MaturityDate"], "%d.%m.%Y").date(),
                 day_count_convention=entry["DayCountConv"],
                 conversion_factors=entry.get("CF", {}),
+                next_coupon_date=self._parse_optional_date(entry.get("NextCouponDate")),
+                last_coupon_date=self._parse_optional_date(entry.get("LastCouponDate")),
             )
 
     def _load_futures(self, path: Path) -> None:
@@ -52,8 +60,8 @@ class JsonStaticDataProvider(StaticDataProvider):
                 deliverable_bonds=entry.get("DeliverableBonds", []),
             )
 
-    def get_bonds(self, isins: List[str]) -> List[Bond]:
-        return [self._bonds[isin] for isin in isins if isin in self._bonds]
+    def get_bonds(self) -> List[Bond]:
+        return list(self._bonds.values())
 
-    def get_futures(self, contract_symbols: List[str]) -> List[Future]:
-        return [self._futures[symbol] for symbol in contract_symbols if symbol in self._futures]
+    def get_futures(self) -> List[Future]:
+        return list(self._futures.values())

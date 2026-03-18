@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-
 from src.net_basis_monitor.core.models.value_objects.tick import TickHandler
 
 class MarketDataFeed(ABC):
