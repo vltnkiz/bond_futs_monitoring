@@ -2,6 +2,7 @@ import logging
 from pathlib import Path
 
 from src.sourcing.adapters.futures_basket_downloader.eurex_futures_basket_downloader import EurexFuturesBasketDownloader
+from src.sourcing.adapters.static_market_data_provider.lseg_realtime_market_data_provider import LSEGRealtimeMarketDataProvider
 from src.sourcing.adapters.static_market_data_provider.lseg_static_market_data_provider import LSEGStaticMarketDataProvider
 from src.sourcing.core.models.bond_definition import BondPortfolio
 from src.sourcing.core.models.future_definition import FuturePortfolio
@@ -11,7 +12,7 @@ from src.sourcing.core.use_cases.refresh_bond_portfolio import RefreshBondPortfo
 from src.sourcing.core.use_cases.refresh_future_portfolio import RefreshFuturePortfolio
 
 logging.basicConfig(
-    level=logging.WARNING,
+    level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s - %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
 )
@@ -41,13 +42,14 @@ def run() -> None:
         portfolio_file=_FUTURE_PORTFOLIO_FILE,
     ).execute()
 
-    with LSEGStaticMarketDataProvider() as market_data_provider:
+    with LSEGRealtimeMarketDataProvider() as market_data_provider:
         _logger.info("Step 4: Enrich bond coupon dates")
         EnrichBondCouponDates(
             bond_portfolio=BondPortfolio(str(_BOND_PORTFOLIO_FILE)),
             market_data_provider=market_data_provider,
         ).execute()
 
+    with LSEGStaticMarketDataProvider() as market_data_provider:
         _logger.info("Step 5: Enrich future expiry dates")
         EnrichFutureExpiryDates(
             future_portfolio=FuturePortfolio(str(_FUTURE_PORTFOLIO_FILE)),

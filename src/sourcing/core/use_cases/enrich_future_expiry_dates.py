@@ -1,7 +1,7 @@
 from datetime import date, timedelta
 
 from src.sourcing.core.models.future_definition import FuturePortfolio
-from src.sourcing.core.ports import StaticMarketDataProvider
+from src.sourcing.core.ports import MarketDataProvider
 
 _MONTH_NAMES = {
     1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr", 5: "May", 6: "Jun",
@@ -20,7 +20,7 @@ def _add_business_days(d: date, n: int) -> date:
 
 
 class EnrichFutureExpiryDates:
-    def __init__(self, future_portfolio: FuturePortfolio, market_data_provider: StaticMarketDataProvider):
+    def __init__(self, future_portfolio: FuturePortfolio, market_data_provider: MarketDataProvider):
         self.__future_portfolio = future_portfolio
         self.__market_data_provider = market_data_provider
 

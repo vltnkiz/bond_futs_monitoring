@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 from src.sourcing.adapters.static_market_data_provider.stub_static_market_data_provider import StubStaticMarketDataProvider
-from src.sourcing.core.ports import StaticMarketDataProvider
+from src.sourcing.core.ports import MarketDataProvider
 from src.sourcing.core.use_cases.enrich_bond_coupon_dates import EnrichBondCouponDates
 from src.sourcing.core.use_cases.refresh_bond_portfolio import RefreshBondPortfolio
 

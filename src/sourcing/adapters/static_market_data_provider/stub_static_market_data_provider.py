@@ -1,9 +1,9 @@
 from typing import Dict, Optional, Tuple
 
-from src.sourcing.core.ports import StaticMarketDataProvider
+from src.sourcing.core.ports import MarketDataProvider
 
 
-class StubStaticMarketDataProvider(StaticMarketDataProvider):
+class StubStaticMarketDataProvider(MarketDataProvider):
     def __init__(self, data: Dict[Tuple[str, str], str]):
         self._data = data
 

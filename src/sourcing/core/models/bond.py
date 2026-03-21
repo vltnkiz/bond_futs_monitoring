@@ -48,11 +48,9 @@ class Bond:
             "MaturityDate": self._MaturityDate,
             "DayCountConv": self._DayCountConv,
             "CF": self._CF,
+            "NextCouponDate": self._NextCouponDate,
+            "LastCouponDate": self._LastCouponDate
         }
-        if self._NextCouponDate is not None:
-            d["NextCouponDate"] = self._NextCouponDate
-        if self._LastCouponDate is not None:
-            d["LastCouponDate"] = self._LastCouponDate
         return d
     
     @classmethod

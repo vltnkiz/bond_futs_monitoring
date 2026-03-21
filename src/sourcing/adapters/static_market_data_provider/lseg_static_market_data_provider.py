@@ -3,12 +3,12 @@ import os
 from typing import Optional
 import lseg.data as ld
 from lseg.data.content import search
-from src.sourcing.core.ports import StaticMarketDataProvider
+from src.sourcing.core.ports import MarketDataProvider
 
 _logger = logging.getLogger(__name__)
 
 
-class LSEGStaticMarketDataProvider(StaticMarketDataProvider):
+class LSEGStaticMarketDataProvider(MarketDataProvider):
     def __init__(self, config_path: str = None):
         if config_path:
             os.environ["LD_LIB_CONFIG_PATH"] = config_path
@@ -27,7 +27,7 @@ class LSEGStaticMarketDataProvider(StaticMarketDataProvider):
     def get(self, ric: str, field: str, view=None) -> Optional[str]:
         try:
             if view is None:
-                view = search.Views.BOND_FUT_OPT_QUOTES
+                view = search.Views.GOV_CORP_INSTRUMENTS if ric.endswith("=") else search.Views.BOND_FUT_OPT_QUOTES
             response = search.Definition(
                 view=view,
                 select=f"RIC,{field}",

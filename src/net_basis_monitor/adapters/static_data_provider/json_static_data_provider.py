@@ -40,8 +40,8 @@ class JsonStaticDataProvider(StaticDataProvider):
                 maturity_date=datetime.strptime(entry["MaturityDate"], "%d.%m.%Y").date(),
                 day_count_convention=entry["DayCountConv"],
                 conversion_factors=entry.get("CF", {}),
-                next_coupon_date=self._parse_optional_date(entry.get("NextCouponDate")),
-                last_coupon_date=self._parse_optional_date(entry.get("LastCouponDate")),
+                next_coupon_date=datetime.strptime(entry["NextCouponDate"], "%d.%m.%Y").date(),
+                last_coupon_date=datetime.strptime(entry["LastCouponDate"], "%d.%m.%Y").date(),
             )
 
     def _load_futures(self, path: Path) -> None:
