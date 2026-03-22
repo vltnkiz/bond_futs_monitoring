@@ -8,11 +8,11 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
+      "CH0127181193",
       "CH0440081567",
       "CH0440081393",
-      "CH0557778310",
       "CH0024524966",
-      "CH0127181193"
+      "CH0557778310"
     ]
   },
   "CONFU26": {
@@ -24,11 +24,11 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "CH0440081567",
       "CH0440081401",
-      "CH0557778310",
+      "CH0127181193",
+      "CH0440081567",
       "CH0024524966",
-      "CH0127181193"
+      "CH0557778310"
     ]
   },
   "FBEUM26": {
@@ -67,8 +67,8 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "EU000A3K4D74",
-      "EU000A4D8KD2"
+      "EU000A4D8KD2",
+      "EU000A3K4D74"
     ]
   },
   "FBONM26": {
@@ -80,9 +80,9 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
+      "ES0000012P33",
       "ES0000012Q08",
-      "ES0000012O67",
-      "ES0000012P33"
+      "ES0000012O67"
     ]
   },
   "FBONU26": {
@@ -94,9 +94,9 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "ES0000012O67",
+      "ES0000012P33",
       "ES0000012Q08",
-      "ES0000012P33"
+      "ES0000012O67"
     ]
   },
   "FBONZ26": {
@@ -108,8 +108,8 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "ES0000012Q08",
-      "ES0000012P33"
+      "ES0000012P33",
+      "ES0000012Q08"
     ]
   },
   "FBTMM26": {
@@ -121,14 +121,14 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
+      "IT0005449969",
       "IT0005595803",
       "IT0005436693",
-      "IT0005671273",
       "IT0005580094",
-      "IT0005619546",
-      "IT0005449969",
+      "IT0005671273",
+      "IT0005466013",
       "IT0005422891",
-      "IT0005466013"
+      "IT0005619546"
     ]
   },
   "FBTMU26": {
@@ -140,13 +140,13 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "IT0005595803",
-      "IT0005436693",
-      "IT0005619546",
-      "IT0005647265",
       "IT0005449969",
+      "IT0005595803",
+      "IT0005647265",
+      "IT0005436693",
+      "IT0005466013",
       "IT0005422891",
-      "IT0005466013"
+      "IT0005619546"
     ]
   },
   "FBTMZ26": {
@@ -158,14 +158,14 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
+      "IT0005449969",
       "IT0005595803",
+      "IT0005647265",
       "IT0005436693",
       "IT0005668220",
+      "IT0005466013",
       "IT0005494239",
-      "IT0005619546",
-      "IT0005647265",
-      "IT0005449969",
-      "IT0005466013"
+      "IT0005619546"
     ]
   },
   "FBTPM26": {
@@ -177,13 +177,13 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "IT0005402117",
-      "IT0005676504",
-      "IT0005631590",
-      "IT0005648149",
-      "IT0005358806",
+      "IT0005433195",
       "IT0005607970",
-      "IT0005433195"
+      "IT0005676504",
+      "IT0005402117",
+      "IT0005358806",
+      "IT0005648149",
+      "IT0005631590"
     ]
   },
   "FBTPU26": {
@@ -195,11 +195,11 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "IT0005402117",
+      "IT0005433195",
       "IT0005676504",
-      "IT0005631590",
+      "IT0005402117",
       "IT0005648149",
-      "IT0005433195"
+      "IT0005631590"
     ]
   },
   "FBTPZ26": {
@@ -211,11 +211,11 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "IT0005402117",
+      "IT0005433195",
       "IT0005676504",
-      "IT0005631590",
+      "IT0005402117",
       "IT0005648149",
-      "IT0005433195"
+      "IT0005631590"
     ]
   },
   "FBTSM26": {
@@ -227,16 +227,16 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "IT0005584849",
-      "IT0005445306",
-      "IT0005548315",
-      "IT0005641029",
       "IT0005566408",
       "IT0005660052",
-      "IT0005340929",
       "IT0005495731",
-      "IT0005467482",
+      "IT0005445306",
+      "IT0005548315",
       "IT0005365165",
+      "IT0005584849",
+      "IT0005340929",
+      "IT0005641029",
+      "IT0005467482",
       "IT0005689960"
     ]
   },
@@ -249,14 +249,14 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "IT0005584849",
-      "IT0005611055",
-      "IT0005365165",
       "IT0005566408",
-      "IT0005467482",
-      "IT0005495731",
+      "IT0005611055",
       "IT0005660052",
+      "IT0005495731",
+      "IT0005365165",
+      "IT0005584849",
       "IT0005340929",
+      "IT0005467482",
       "IT0005689960"
     ]
   },
@@ -269,15 +269,15 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "IT0005584849",
-      "IT0005611055",
-      "IT0005519787",
-      "IT0005689960",
       "IT0005566408",
+      "IT0005519787",
+      "IT0005611055",
+      "IT0005689960",
       "IT0005660052",
       "IT0005495731",
+      "IT0005365165",
       "IT0005467482",
-      "IT0005365165"
+      "IT0005584849"
     ]
   },
   "FGBLM26": {
@@ -289,10 +289,10 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "DE000BU2Z064",
-      "DE000BU3Z047",
+      "DE000BU2Z056",
       "DE000BU2Z049",
-      "DE000BU2Z056"
+      "DE000BU2Z064",
+      "DE000BU3Z047"
     ]
   },
   "FGBLU26": {
@@ -304,8 +304,8 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "DE000BU2Z064",
-      "DE000BU2Z056"
+      "DE000BU2Z056",
+      "DE000BU2Z064"
     ]
   },
   "FGBLZ26": {
@@ -317,8 +317,8 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "DE000BU2Z064",
-      "DE000BU2Z056"
+      "DE000BU2Z056",
+      "DE000BU2Z064"
     ]
   },
   "FGBMM26": {
@@ -330,10 +330,10 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "DE000BU25067",
+      "DE0001102531",
       "DE0001102564",
       "DE0001030732",
-      "DE0001102531"
+      "DE000BU25067"
     ]
   },
   "FGBMU26": {
@@ -345,10 +345,10 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "DE000BU25067",
       "DE0001102580",
+      "DE0001102564",
       "DE0001030732",
-      "DE0001102564"
+      "DE000BU25067"
     ]
   },
   "FGBMZ26": {
@@ -360,8 +360,8 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "DE0001102564",
       "DE0001102580",
+      "DE0001102564",
       "DE0001030732"
     ]
   },
@@ -374,9 +374,9 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "DE0001102457",
       "DE000BU25000",
-      "DE000BU22122"
+      "DE000BU22122",
+      "DE0001102457"
     ]
   },
   "FGBSU26": {
@@ -388,9 +388,9 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "DE0001102457",
       "DE000BU25018",
-      "DE0001102556"
+      "DE0001102556",
+      "DE0001102457"
     ]
   },
   "FGBSZ26": {
@@ -403,8 +403,8 @@
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
       "DE000BU25018",
-      "DE0001102465",
-      "DE0001102556"
+      "DE0001102556",
+      "DE0001102465"
     ]
   },
   "FGBXM26": {
@@ -416,12 +416,12 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
+      "DE0001102481",
       "DE0001030724",
+      "DE0001102614",
       "DE0001030757",
       "DE0001102572",
       "DE000BU2D012",
-      "DE0001102614",
-      "DE0001102481",
       "DE000BU2D004"
     ]
   },
@@ -434,10 +434,10 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
+      "DE0001102614",
       "DE0001030757",
       "DE0001102572",
       "DE000BU2D012",
-      "DE0001102614",
       "DE000BU2D004"
     ]
   },
@@ -450,11 +450,11 @@
     "TickValue": 0.0,
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
-      "DE000BU2D004",
+      "DE0001102614",
       "DE0001030757",
       "DE0001102572",
       "DE000BU2D012",
-      "DE0001102614"
+      "DE000BU2D004"
     ]
   },
   "FOAMM26": {
@@ -467,8 +467,8 @@
     "NotionalCoupon": 6.0,
     "DeliverableBonds": [
       "FR0014002WK3",
-      "FR001400Z2L7",
-      "FR0012993103"
+      "FR0012993103",
+      "FR001400Z2L7"
     ]
   },
   "FOAMU26": {

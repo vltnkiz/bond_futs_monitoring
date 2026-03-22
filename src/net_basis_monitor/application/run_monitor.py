@@ -1,4 +1,6 @@
+import json
 import logging
+from pathlib import Path
 from typing import Callable
 
 from src.net_basis_monitor.adapters.market_data_feed.lseg_market_data_feed import LSEGMarketDataFeed
@@ -17,9 +19,14 @@ logging.basicConfig(
 )
 
 def build_monitor() -> tuple[MonitorNetBasisUseCase, list]:
-    static_data_provider = JsonStaticDataProvider()
+    static_data_provider = JsonStaticDataProvider(isin_prefix="DE")
     gross_basis_engine = GrossBasisCalculationEngine()
     carry_engine = CarryCalculationEngine()
+
+    _REPO_CURVE_CONFIG_NAME = "eur_repo"
+    repo_curve_config_path = Path(__file__).parents[3] / "data" / "curves" / "repo_curve_configs.json"
+    all_configs = json.loads(repo_curve_config_path.read_text())
+    repo_curve_config = all_configs[_REPO_CURVE_CONFIG_NAME]
 
     future_ids = [f.isin for f in static_data_provider.get_futures()]
     requests = MonitoringRequestBuilder(static_data_provider).build(future_ids)
@@ -28,6 +35,7 @@ def build_monitor() -> tuple[MonitorNetBasisUseCase, list]:
         static_data_provider=static_data_provider,
         gross_basis_engine=gross_basis_engine,
         carry_engine=carry_engine,
+        repo_curve_config=repo_curve_config,
     )
 
     monitor = MonitorNetBasisUseCase(

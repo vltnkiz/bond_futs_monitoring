@@ -6,5 +6,8 @@ test-monitor:
 test-sourcing:
 	pytest tests/sourcing
 
-refresh-portfolios:
+refresh:
 	python -m src.sourcing.application.refresh_all
+
+run:
+	python -m src.net_basis_monitor.application.run_monitor

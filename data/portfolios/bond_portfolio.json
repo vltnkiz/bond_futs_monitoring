@@ -187,7 +187,7 @@
       "FBTMZ26": 0.883041
     },
     "NextCouponDate": "2026-05-15",
-    "LastCouponDate": "2025-11-15"
+    "LastCouponDate": "2025-11-17"
   },
   "IT0005595803": {
     "ISIN": "IT0005595803",
@@ -285,7 +285,7 @@
       "FBTMZ26": 0.868375
     },
     "NextCouponDate": "2026-05-15",
-    "LastCouponDate": "2025-11-15"
+    "LastCouponDate": "2025-11-17"
   },
   "IT0005676504": {
     "ISIN": "IT0005676504",
@@ -322,7 +322,7 @@
       "FBTPM26": 0.827188
     },
     "NextCouponDate": "2026-09-01",
-    "LastCouponDate": "2026-03-01"
+    "LastCouponDate": "2026-03-02"
   },
   "IT0005648149": {
     "ISIN": "IT0005648149",
@@ -348,7 +348,7 @@
       "FBTPZ26": 0.685975
     },
     "NextCouponDate": "2026-09-01",
-    "LastCouponDate": "2026-03-01"
+    "LastCouponDate": "2026-03-02"
   },
   "IT0005433195": {
     "ISIN": "IT0005433195",
@@ -361,7 +361,7 @@
       "FBTPZ26": 0.623169
     },
     "NextCouponDate": "2026-09-01",
-    "LastCouponDate": "2026-03-01"
+    "LastCouponDate": "2026-03-02"
   },
   "IT0005607970": {
     "ISIN": "IT0005607970",
@@ -495,7 +495,7 @@
       "FBTSZ26": 0.926581
     },
     "NextCouponDate": "2026-09-15",
-    "LastCouponDate": "2026-03-15"
+    "LastCouponDate": "2026-03-16"
   },
   "IT0005660052": {
     "ISIN": "IT0005660052",
@@ -544,7 +544,7 @@
       "FGBLZ26": 0.785735
     },
     "NextCouponDate": "2027-02-15",
-    "LastCouponDate": "2026-02-15"
+    "LastCouponDate": "2026-02-16"
   },
   "DE000BU2Z056": {
     "ISIN": "DE000BU2Z056",
@@ -557,7 +557,7 @@
       "FGBLZ26": 0.774902
     },
     "NextCouponDate": "2026-08-17",
-    "LastCouponDate": "2025-08-17"
+    "LastCouponDate": "2025-08-18"
   },
   "DE000BU3Z047": {
     "ISIN": "DE000BU3Z047",
@@ -568,7 +568,7 @@
       "FGBLM26": 0.768181
     },
     "NextCouponDate": "2027-02-15",
-    "LastCouponDate": "2026-02-15"
+    "LastCouponDate": "2026-02-16"
   },
   "DE000BU2Z049": {
     "ISIN": "DE000BU2Z049",
@@ -579,7 +579,7 @@
       "FGBLM26": 0.768181
     },
     "NextCouponDate": "2027-02-15",
-    "LastCouponDate": "2026-02-15"
+    "LastCouponDate": "2026-02-16"
   },
   "DE0001030732": {
     "ISIN": "DE0001030732",
@@ -592,7 +592,7 @@
       "FGBMZ26": 0.761347
     },
     "NextCouponDate": "2026-08-17",
-    "LastCouponDate": "2025-08-17"
+    "LastCouponDate": "2025-08-18"
   },
   "DE0001102564": {
     "ISIN": "DE0001102564",
@@ -605,7 +605,7 @@
       "FGBMZ26": 0.761347
     },
     "NextCouponDate": "2026-08-17",
-    "LastCouponDate": "2025-08-17"
+    "LastCouponDate": "2025-08-18"
   },
   "DE000BU25067": {
     "ISIN": "DE000BU25067",
@@ -628,7 +628,7 @@
       "FGBMM26": 0.761104
     },
     "NextCouponDate": "2027-02-15",
-    "LastCouponDate": "2026-02-15"
+    "LastCouponDate": "2026-02-16"
   },
   "DE0001102580": {
     "ISIN": "DE0001102580",
@@ -640,7 +640,7 @@
       "FGBMZ26": 0.739308
     },
     "NextCouponDate": "2027-02-15",
-    "LastCouponDate": "2026-02-15"
+    "LastCouponDate": "2026-02-16"
   },
   "DE0001102457": {
     "ISIN": "DE0001102457",
@@ -652,7 +652,7 @@
       "FGBSU26": 0.898123
     },
     "NextCouponDate": "2026-08-17",
-    "LastCouponDate": "2025-08-17"
+    "LastCouponDate": "2025-08-18"
   },
   "DE000BU25000": {
     "ISIN": "DE000BU25000",
@@ -663,7 +663,7 @@
       "FGBSM26": 0.935489
     },
     "NextCouponDate": "2026-04-13",
-    "LastCouponDate": "2025-04-13"
+    "LastCouponDate": "2025-04-14"
   },
   "DE000BU22122": {
     "ISIN": "DE000BU22122",
@@ -674,7 +674,7 @@
       "FGBSM26": 0.936365
     },
     "NextCouponDate": "2027-03-15",
-    "LastCouponDate": "2026-03-15"
+    "LastCouponDate": "2026-03-16"
   },
   "DE000BU25018": {
     "ISIN": "DE000BU25018",
@@ -686,7 +686,7 @@
       "FGBSZ26": 0.938364
     },
     "NextCouponDate": "2026-10-19",
-    "LastCouponDate": "2025-10-19"
+    "LastCouponDate": "2025-10-20"
   },
   "DE0001102556": {
     "ISIN": "DE0001102556",
@@ -698,7 +698,7 @@
       "FGBSZ26": 0.893556
     },
     "NextCouponDate": "2026-11-16",
-    "LastCouponDate": "2025-11-16"
+    "LastCouponDate": "2025-11-17"
   },
   "DE0001102465": {
     "ISIN": "DE0001102465",
@@ -709,7 +709,7 @@
       "FGBSZ26": 0.885495
     },
     "NextCouponDate": "2027-02-15",
-    "LastCouponDate": "2026-02-15"
+    "LastCouponDate": "2026-02-16"
   },
   "DE000BU2D004": {
     "ISIN": "DE000BU2D004",
@@ -722,7 +722,7 @@
       "FGBXZ26": 0.75153
     },
     "NextCouponDate": "2026-08-17",
-    "LastCouponDate": "2025-08-17"
+    "LastCouponDate": "2025-08-18"
   },
   "DE0001102572": {
     "ISIN": "DE0001102572",
@@ -735,7 +735,7 @@
       "FGBXZ26": 0.365252
     },
     "NextCouponDate": "2026-08-17",
-    "LastCouponDate": "2025-08-17"
+    "LastCouponDate": "2025-08-18"
   },
   "DE0001102614": {
     "ISIN": "DE0001102614",
@@ -748,7 +748,7 @@
       "FGBXZ26": 0.643086
     },
     "NextCouponDate": "2026-08-17",
-    "LastCouponDate": "2025-08-17"
+    "LastCouponDate": "2025-08-18"
   },
   "DE0001102481": {
     "ISIN": "DE0001102481",
@@ -759,7 +759,7 @@
       "FGBXM26": 0.387365
     },
     "NextCouponDate": "2026-08-17",
-    "LastCouponDate": "2025-08-17"
+    "LastCouponDate": "2025-08-18"
   },
   "DE0001030757": {
     "ISIN": "DE0001030757",
@@ -772,7 +772,7 @@
       "FGBXZ26": 0.643086
     },
     "NextCouponDate": "2026-08-17",
-    "LastCouponDate": "2025-08-17"
+    "LastCouponDate": "2025-08-18"
   },
   "DE0001030724": {
     "ISIN": "DE0001030724",
@@ -783,7 +783,7 @@
       "FGBXM26": 0.387365
     },
     "NextCouponDate": "2026-08-17",
-    "LastCouponDate": "2025-08-17"
+    "LastCouponDate": "2025-08-18"
   },
   "DE000BU2D012": {
     "ISIN": "DE000BU2D012",
@@ -796,7 +796,7 @@
       "FGBXZ26": 0.810737
     },
     "NextCouponDate": "2026-08-17",
-    "LastCouponDate": "2025-08-17"
+    "LastCouponDate": "2025-08-18"
   },
   "FR0012993103": {
     "ISIN": "FR0012993103",

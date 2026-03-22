@@ -1,0 +1,8 @@
+{
+  "eur_repo": {
+    "EUROND=TTKL": "ON",
+    "EUR1WDP=CALP": "1W",
+    "EUR3MIRS":     "3M",
+    "EUR6MD=":     "6M"
+  }
+}

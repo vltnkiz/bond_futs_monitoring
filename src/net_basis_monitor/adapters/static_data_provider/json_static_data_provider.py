@@ -17,15 +17,17 @@ class JsonStaticDataProvider(StaticDataProvider):
         self,
         bond_portfolio_path: str | Path = _DEFAULT_BOND_PATH,
         future_definition_path: str | Path = _DEFAULT_FUTURE_PATH,
+        isin_prefix: Optional[str] = None,
     ):
         self._bonds: Dict[str, Bond] = {}
         self._futures: Dict[str, Future] = {}
+        self._isin_prefix = isin_prefix
         self._load_bonds(Path(bond_portfolio_path))
         self._load_futures(Path(future_definition_path))
 
 
     @staticmethod
-    def _parse_optional_date(value: Optional[str]) -> Optional[date]:
+    def _parse_date(value: Optional[str]) -> Optional[date]:
         if not value:
             return None
         return date.fromisoformat(str(value)[:10])
@@ -34,20 +36,26 @@ class JsonStaticDataProvider(StaticDataProvider):
         with open(path, "r") as f:
             data = json.load(f)
         for isin, entry in data.items():
+            if self._isin_prefix and not entry["ISIN"].startswith(self._isin_prefix):
+                continue
             self._bonds[isin] = Bond(
                 isin=entry["ISIN"],
                 coupon_rate=entry["CouponRate"],
                 maturity_date=datetime.strptime(entry["MaturityDate"], "%d.%m.%Y").date(),
                 day_count_convention=entry["DayCountConv"],
                 conversion_factors=entry.get("CF", {}),
-                next_coupon_date=datetime.strptime(entry["NextCouponDate"], "%d.%m.%Y").date(),
-                last_coupon_date=datetime.strptime(entry["LastCouponDate"], "%d.%m.%Y").date(),
+                next_coupon_date=self._parse_date(entry["NextCouponDate"]),
+                last_coupon_date=self._parse_date(entry["LastCouponDate"]),
             )
 
     def _load_futures(self, path: Path) -> None:
         with open(path, "r") as f:
             data = json.load(f)
         for symbol, entry in data.items():
+            if self._isin_prefix:
+                deliverable = entry.get("DeliverableBonds", [])
+                if not any(b.startswith(self._isin_prefix) for b in deliverable):
+                    continue
             self._futures[symbol] = Future(
                 isin=entry["ContractSymbol"],
                 contract_symbol=entry["ContractSymbol"],

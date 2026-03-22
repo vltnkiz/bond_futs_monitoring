@@ -9,6 +9,7 @@ class CarryCalcInput(CalcInput):
     clean_price: float
     coupon_rate: float
     delivery_date: date
+    settlement_date: date
     repo_rate: float
     next_coupon_date: datetime
     last_coupon_date: datetime

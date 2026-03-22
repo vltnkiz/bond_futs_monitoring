@@ -56,11 +56,6 @@ class MarketState(ABC, Generic[InstrumentT]):
 
 @dataclass
 class BondMarketState(MarketState[Bond]):
-    repo_rate: Optional[float] = field(default=None, init=False)
-
-    def set_repo_rate(self, rate: float) -> None:
-        self.repo_rate = rate
-
     @property
     def instrument_id(self) -> str:
         return self.instrument.lseg_ric

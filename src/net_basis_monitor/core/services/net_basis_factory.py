@@ -1,7 +1,11 @@
+import json
 import logging
-from typing import List, Tuple
+from datetime import date
+from pathlib import Path
+from typing import Dict, List, Tuple
 
-from src.net_basis_monitor.core.models.curves.rate_curve import RateCurve
+from src.net_basis_monitor.core.models.curves.interpolated_curve import InterpolatedCurve
+from src.net_basis_monitor.core.models.curves.tenor_date_resolver import TenorDateResolver
 from src.net_basis_monitor.core.models.value_objects.monitoring_request import MonitoringRequest
 from src.net_basis_monitor.core.models.market_state import BondMarketState, FutureMarketState
 from src.net_basis_monitor.core.models.net_basis_strategy import NetBasisStrategy
@@ -18,13 +22,35 @@ class NetBasisFactory:
         static_data_provider: StaticDataProvider,
         gross_basis_engine: GrossBasisCalculationEngine,
         carry_engine: CarryCalculationEngine,
+        repo_curve_config: Dict[str, str],
     ):
         self._static_data_provider = static_data_provider
         self._gross_basis_engine = gross_basis_engine
         self._carry_engine = carry_engine
+        # Values may be ISO date strings ("2026-03-24") or tenor labels ("ON", "1W", "3M").
+        self._repo_ric_map: Dict[str, date] = {}
+        resolver = TenorDateResolver()
+        today = date.today()
+        for ric, value in repo_curve_config.items():
+            try:
+                self._repo_ric_map[ric] = date.fromisoformat(value)
+            except ValueError:
+                try:
+                    resolved = resolver.resolve(value, today)
+                    self._repo_ric_map[ric] = resolved
+                    logger.debug("Tenor '%s' for RIC '%s' resolved to %s", value, ric, resolved)
+                except ValueError:
+                    logger.warning("Unrecognised tenor or date '%s' for RIC '%s' — skipping", value, ric)
 
-    def create_engine(self, requests: List[MonitoringRequest]) -> Tuple[NetBasisEngine, List[str]]:
+    def create_engine(self, requests: List[MonitoringRequest]) -> Tuple[NetBasisEngine, List[str], List[str]]:
+        """
+        Returns (engine, price_symbols, repo_rics).
+        price_symbols: RICs for bond/future price subscriptions.
+        repo_rics: RICs for repo curve tenor subscriptions.
+        """
         engine = NetBasisEngine()
+        rate_curve = InterpolatedCurve(name="repo_curve")
+        engine.configure_repo_curve(rate_curve, self._repo_ric_map)
 
         bond_map = {b.isin: b for b in self._static_data_provider.get_bonds()}
         future_map = {f.contract_symbol: f for f in self._static_data_provider.get_futures()}
@@ -59,8 +85,9 @@ class NetBasisFactory:
                 bond_state=created_states[req.bond_id],
                 future_state=created_states[req.future_id],
                 gross_basis_engine=self._gross_basis_engine,
-                carry_engine=self._carry_engine
+                carry_engine=self._carry_engine,
+                rate_curve=rate_curve,
             )
             engine.register_strategy(strategy)
 
-        return engine, list(instruments_to_monitor)
+        return engine, list(instruments_to_monitor), list(self._repo_ric_map.keys())

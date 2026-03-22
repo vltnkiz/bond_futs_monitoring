@@ -1,5 +1,5 @@
 import logging
-from datetime import date
+from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
 
 from src.sourcing.core.models.bond_definition import BondPortfolio
@@ -18,6 +18,15 @@ def _coupon_frequency_months(isin: str) -> int:
     if isin.startswith("IT"):
         return 6
     return 12
+
+
+def _adjust_to_business_day(d: date) -> date:
+    """Forward-adjust a nominal coupon date to the next business day if it falls on a weekend."""
+    if d.weekday() == 5:   # Saturday → Monday
+        return d + timedelta(days=2)
+    if d.weekday() == 6:   # Sunday → Monday
+        return d + timedelta(days=1)
+    return d
 
 
 class EnrichBondCouponDates:
@@ -40,13 +49,14 @@ class EnrichBondCouponDates:
                 next_cpn = date.fromisoformat(str(raw)[:10])
 
             freq_months = _coupon_frequency_months(bond.isin)
-            last_cpn = next_cpn - relativedelta(months=freq_months)
+            last_cpn_nominal = next_cpn - relativedelta(months=freq_months)
+            last_cpn = _adjust_to_business_day(last_cpn_nominal)
 
             bond.enrich_coupon_dates(
                 next_coupon_date=next_cpn.isoformat(),
                 last_coupon_date=last_cpn.isoformat(),
             )
-            _logger.info("Enriched %s: last=%s, next=%s", bond.isin, last_cpn.isoformat(), next_cpn.isoformat())
+            _logger.info("Enriched %s: last=%s, next=%s (coupon_period=%d days)", bond.isin, last_cpn.isoformat(), next_cpn.isoformat(), (next_cpn - last_cpn).days)
 
         self.__bond_portfolio.save()
         self.__market_data_provider.close()

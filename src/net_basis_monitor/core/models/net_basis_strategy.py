@@ -1,14 +1,14 @@
 import logging
 from typing import Optional
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
-from src.net_basis_monitor.core.models.curves.rate_curve import RateCurve
 from src.net_basis_monitor.core.models.market_state import BondMarketState, FutureMarketState
 from src.net_basis_monitor.core.models.value_objects.net_basis import NetBasis
 from src.net_basis_monitor.core.models.calculation_engines.gross_basis_calculation_engine import GrossBasisCalculationEngine
 from src.net_basis_monitor.core.models.calculation_engines.carry_calculation_engine import CarryCalculationEngine
 from src.net_basis_monitor.core.models.calculation_params.gross_basis_calculations import GrossBasisCalcInput
 from src.net_basis_monitor.core.models.calculation_params.carry_calculations import CarryCalcInput
+from src.net_basis_monitor.core.models.curves.rate_curve import RateCurve
 
 logger = logging.getLogger(__name__)
 
@@ -20,11 +20,13 @@ class NetBasisStrategy:
         future_state: FutureMarketState,
         gross_basis_engine: GrossBasisCalculationEngine,
         carry_engine: CarryCalculationEngine,
+        rate_curve: RateCurve,
     ):
         self.bond_state = bond_state
         self.future_state = future_state
         self.gross_basis_engine = gross_basis_engine
         self.carry_engine = carry_engine
+        self._rate_curve = rate_curve
 
     def compute(self) -> Optional[NetBasis]:
         if not self._is_data_sufficient():
@@ -56,6 +58,17 @@ class NetBasisStrategy:
             gross_basis=gross_basis_result,
             carry=carry_result
         )
+
+    @staticmethod
+    def _add_business_days(from_date, n: int):
+        d = from_date
+        while d.weekday() >= 5: 
+            d += timedelta(days=1)
+        while n > 0:
+            d += timedelta(days=1)
+            if d.weekday() < 5:
+                n -= 1
+        return d
 
     def _is_data_sufficient(self) -> bool:
         if not self.bond_state.last_tick or not self.future_state.last_tick:
@@ -105,6 +118,12 @@ class NetBasisStrategy:
             logger.error(f"Missing coupon dates for {bond.isin}")
             return None
 
+        try:
+            repo_rate = self._rate_curve.get_rate(future.delivery_date)
+        except ValueError:
+            logger.debug("Repo curve not yet hydrated for %s — skipping carry calc", bond.isin)
+            return None
+
         def to_datetime(d):
             if isinstance(d, datetime): return d
             return datetime(d.year, d.month, d.day, tzinfo=timezone.utc)
@@ -116,9 +135,10 @@ class NetBasisStrategy:
             clean_price=bond_mid_price,
             coupon_rate=bond.coupon_rate,
             delivery_date=future.delivery_date,
-            repo_rate=4.0,  # Placeholder, should be fetched from repo curve
+            repo_rate=repo_rate,
             next_coupon_date=to_datetime(bond.next_coupon_date),
             last_coupon_date=to_datetime(bond.last_coupon_date),
             coupon_income_day_convention=bond.day_count_convention,
-            financing_day_convention="ACT/365"
+            settlement_date=self._add_business_days(datetime.now(timezone.utc).date(), 2),
+            financing_day_convention="ACT/360"
         )
